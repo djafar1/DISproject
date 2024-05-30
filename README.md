@@ -1,2 +1,2 @@
 # DISproject
-Hey
+Hey this is our cool project!
