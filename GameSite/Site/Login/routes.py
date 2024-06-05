@@ -1,11 +1,11 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint
-from bank import app, conn, bcrypt
-from bank.forms import CustomerLoginForm, EmployeeLoginForm, DirectCustomerLoginForm
+from Site import app, conn, bcrypt
+from Site.forms import CustomerLoginForm, EmployeeLoginForm, DirectCustomerLoginForm
 from flask_login import login_user, current_user, logout_user, login_required
-from bank.models import select_Employee
-from bank.models import Customers, select_Customer, select_customer_direct
-from bank.models import select_cus_accounts, select_customers_direct
-from bank import roles, mysession
+from Site.models import select_Employee
+from Site.models import Customers, select_Customer, select_customer_direct
+from Site.models import select_cus_accounts, select_customers_direct
+from Site import roles, mysession
 
 Login = Blueprint('Login', __name__)
 

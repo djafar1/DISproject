@@ -1,8 +1,8 @@
 --
 -- schema_ins.sql
--- Populate bank schema with data.
+-- Populate site schema with data.
 --
-\echo Emptying the bank database. Deleting all tuples.
+\echo Emptying the site database. Deleting all tuples.
 --
 -- Dependency level 2
 -- Referential integrity to level 1 and 0
