@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'fc089b9218301ad987914c53481bff04'
 
 # set your own database
-#db = "dbname='bank' user='postgres' host='127.0.0.1' password = 'UIS'"
+#db = "dbname='site' user='postgres' host='127.0.0.1' password = 'UIS'"
 db = "dbname='disproject' user='postgres' host='127.0.0.1' password = 'hmx89ymf'"
 conn = psycopg2.connect(db)
 
@@ -32,9 +32,7 @@ print(roles)
 mysession = {"state" : "initializing","role" : "Not assingned", "id": 0 ,"age" : 202212}
 print(mysession)
 
-from bank.Login.routes import Login
-from bank.Customer.routes import Customer
-from bank.Employee.routes import Employee
+from Site.Login.routes import Login
+from Site.Customer.routes import Customer
 app.register_blueprint(Login)
 app.register_blueprint(Customer)
-app.register_blueprint(Employee)

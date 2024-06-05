@@ -1,18 +1,18 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint
-from bank import app, conn, bcrypt
-from bank.forms import DepositForm, InvestForm
-from bank.forms import TransferForm
+from Site import app, conn, bcrypt
+from Site.forms import DepositForm, InvestForm
+from Site.forms import TransferForm
 from flask_login import current_user
-from bank.models import CheckingAccount, InvestmentAccount, update_CheckingAccount
-from bank.models import select_cus_investments_with_certificates, select_cus_investments, select_cus_investments_certificates_sum
-from bank.models import select_cus_accounts,  transfer_account
+from Site.models import CheckingAccount, InvestmentAccount, update_CheckingAccount
+from Site.models import select_cus_investments_with_certificates, select_cus_investments, select_cus_investments_certificates_sum
+from Site.models import select_cus_accounts,  transfer_account
 
 
 import sys, datetime
 
 #202212
 # roles is defined in the init-file
-from bank import roles, mysession
+from Site import roles, mysession
 
 iEmployee = 1
 iCustomer = 2
