@@ -202,6 +202,19 @@ def punkpage(punkid):
 
     return render_template("cryptopunk.html", content=ct, price=price)
 
+
+@app.route("/videogames")
+def videogames():
+    cur = conn.cursor()
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    
+    sql = '''SELECT * FROM video_games'''
+    cur.execute(sql)
+    games = cur.fetchall()
+    length = len(games)
+    return render_template("videogames.html", games = games, length=length)
+
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
     app.run(debug=True)
