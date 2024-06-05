@@ -7,6 +7,6 @@ accessories char(10000),
 CONSTRAINT nft_pk PRIMARY KEY (id));
 
 copy  Attributes(id,type,gender, skin_tone, count, accessories)
-            from 'C:\PATH\TO\PROJECT\dis-nft-project\tmp\attributes.csv'
+            from 'C:\Users\djafa\OneDrive\Skrivebord\DIS\DISproject\WeirdGame\nft-crypto-punk\tmp\attributes.csv'
             delimiter ','
             CSV HEADER;
