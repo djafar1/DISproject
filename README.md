@@ -1,2 +1,2 @@
 # DISproject
-Hey this is our cool project!
+Hey this is our cool project! In this project we will
