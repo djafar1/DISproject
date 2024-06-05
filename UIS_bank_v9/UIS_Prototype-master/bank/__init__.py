@@ -13,9 +13,9 @@ app.config['SECRET_KEY'] = 'fc089b9218301ad987914c53481bff04'
 
 # set your own database
 #db = "dbname='bank' user='postgres' host='127.0.0.1' password = 'UIS'"
-db = "dbname='bank24017' user='postgres' host='127.0.0.1' password = 'UIS'"
+db = "dbname='felicia' user='felicia' host='127.0.0.1' password = 'myPassword'"
 conn = psycopg2.connect(db)
-
+ 
 bcrypt = Bcrypt(app)
 
 
