@@ -164,12 +164,15 @@ def profile():
     
     username = session['username']
 
-    sql1 = f'''select title, releasedate, developer, publisher, genres, productrating, userscore, usertatingscount, id 
-    from favorites natural join attributes where username = '{username}' '''
+    sql1 = f'''
+    SELECT title, releasedate, developer, publisher, genres, productrating, userscore, userratingscount, vg.id 
+    FROM favorites f, video_games vg 
+    WHERE f.username = '{username}' 
+    '''
     cur.execute(sql1)
     favs = cur.fetchall()
     length = len(favs)
-    return render_template("profile.html", content=favs, length=length, username = username)
+    return render_template("Favorites.html", games=favs, length=length, username = username)
 
 
 @app.route("/games")

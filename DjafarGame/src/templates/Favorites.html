@@ -1,0 +1,27 @@
+{% extends "navbar.html" %} {% block content %}
+<h1>
+  Welcome back {{username}}!
+</h1>
+<h3>
+  Favourite games: 
+</h3>
+<div class="cards">
+  {%for i in range(length)%}
+    <a href="/games/{{games[i][8]}}">
+      <div class="card">
+        <div class="container">
+          <h4><b>Title of the game:<br> {{games[i][0]}}</b></h4>
+          <p class="card-text">Release Date: {{games[i][1]}}</p>
+          <p class="card-text">Developer: {{games[i][2]}}</p>
+          <p class="card-text">Publisher: {{games[i][3]}}</p>
+          <p class="card-text">Genres: {{games[i][4]}}</p>
+          <p class="card-text">Product Rating: {{games[i][5]}}</p>
+          <p class="card-text">User Score: {{games[i][6]}}</p>
+          <p class="card-text">User Ratings Count: {{games[i][7]}}</p>
+          <p class="card-text">Game id: {{games[i][8]}}</p>
+        </div>
+      </div>
+    </a>
+  {%endfor%}
+</div>
+{% endblock content %}
