@@ -7,4 +7,4 @@ accessories char(10000),
 CONSTRAINT nft_pk PRIMARY KEY (id));
 
 -- REPLACE FROM with your own direct path to csv file in TMP.
-\copy Attributes(id,type,gender, skin_tone, count, accessories) from 'C:\Users\djafa\OneDrive\Skrivebord\DIS\DISproject\DjafarGame\nft-crypto-punk\tmp\attributes.csv' delimiter ',' CSV HEADER;
+\copy Attributes(id,type,gender, skin_tone, count, accessories) from '/home/felicia/Documents/DIS/Actual_Dis_project/DISproject/DjafarGame/src/Create Attributes.SQL' delimiter ',' CSV HEADER;

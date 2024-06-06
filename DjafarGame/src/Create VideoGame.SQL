@@ -7,7 +7,10 @@ CREATE TABLE IF NOT EXISTS video_games (
     ProductRating VARCHAR(100),
     UserScore FLOAT,
     UserRatingsCount INT
+    id INT
+    CONSTRAINT games PRIMARY KEY (id)
+
 );
 
 -- REPLACE FROM with your own direct path to csv file in TMP.
-\copy video_games(Title, ReleaseDate, Developer, Publisher, Genres, ProductRating, UserScore, UserRatingsCount) from 'C:\Users\djafa\OneDrive\Skrivebord\DIS\DISproject\DjafarGame\nft-crypto-punk\tmp\videogames.csv' delimiter ',' CSV HEADER;
+\copy video_games(Title, ReleaseDate, Developer, Publisher, Genres, ProductRating, UserScore, UserRatingsCount, id) from '/home/felicia/Documents/DIS/Actual_Dis_project/DISproject/DjafarGame/src/Create VideoGame.SQL' delimiter ',' CSV HEADER;
