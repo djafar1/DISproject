@@ -47,7 +47,7 @@ body {
 }
 label {
   font-size: 18px;
-  color: #ea00d9;
+  color: #a895a7;
 }
 #form {
   width: 400px;
@@ -55,8 +55,8 @@ label {
   padding: 10px;
   font-size: 18px;
   outline:none;
-  background: linear-gradient(to left top, #000, #133e7c) fixed;
-  border: 4px solid #ea00d9;
+  background: linear-gradient(to left top, #000, #0849a4) fixed;
+  border: 4px solid #dd13cf;
   color: rgba(255,255,255,0.8);
   margin: 5px;
   transition: all 0.5s;
@@ -84,7 +84,7 @@ width: 100px;
 
 #button {
   width: 125px;
-  font-family: 'Press Start 2P', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   padding: 11px;
   font-size: 15px;
   font-weight:bold;
@@ -93,6 +93,7 @@ width: 100px;
   background: linear-gradient(to left top, #000, #133e7c) fixed;
   border: 4px solid #ea00d9;
   color: rgba(255,255,255,0.8);
+  text-decoration: none;
 }
 #buttonAdd {
   width: 250px;
@@ -106,6 +107,7 @@ width: 100px;
   background: linear-gradient(to left top, #000, #133e7c) fixed;
   border: 6px solid #ea00d9;
   color: rgba(255,255,255,0.8);
+  text-decoration: none;
 }
 #buttonAdd:hover {
   border: 4px solid #fcec0c;
