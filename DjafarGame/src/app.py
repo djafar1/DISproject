@@ -12,7 +12,7 @@ import random
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='Dis' user='felicia' host='localhost' password='myPassword'" #potentially wrong password
+db = "dbname='GameThing' user='postgres' host='localhost' password='hmx89ymf'" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -47,13 +47,13 @@ def createaccount():
 def home():
     cur = conn.cursor()
     #Getting 10 random rows from Attributes
-    tenrand = '''select * from Attributes order by random() limit 10;'''
+    tenrand = '''select * from video_games order by random() limit 10;'''
     cur.execute(tenrand)
     games = list(cur.fetchall())
     length = len(games)
 
     #Getting random id from table Attributes
-    randint = '''select id from Attributes order by random() limit 1;'''
+    randint = '''select id from video_games order by random() limit 1;'''
     cur.execute(randint)
     randomNumber = cur.fetchone()[0]
     if not session.get('logged_in'):
@@ -67,7 +67,6 @@ def home():
             input_publisher = request.form["RApublisher"].lower()
             input_userScore = request.form["RAuserScore"].lower()
             input_userRatingsCount = request.form["RAuserRatingsCount"].lower()
-            input_id = request.form["RAid"].lower()
             input_id = request.form["gameid"].lower() or ""
 
             if input_id != "":
@@ -75,9 +74,8 @@ def home():
                 return redirect(url_for("gamepage", gameid=input_id))
             return redirect(url_for("querypage", title = input_title, genre=input_genre, releaseDate=input_releaseDate, developer=input_developer, publisher=input_publisher,
                                     userScore=input_userScore, userRatingsCount=input_userRatingsCount, id=input_id))
-            
         length = len(games)
-        return render_template("index.html", content=games, length=length, randomNumber = randomNumber)
+        return render_template("homepage.html", content=games, length=length, randomNumber = randomNumber)
 
 @app.route("/games/<title>/<genre>/<releaseDate>/<developer>/<publisher>/<userScore>/<userRatingsCount>/<id>")
 def querypage(title, genre, releaseDate, developer, publisher, userScore, userRatingsCount, id):
