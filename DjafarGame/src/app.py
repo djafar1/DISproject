@@ -12,7 +12,7 @@ import random
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='postgres' user='postgres' host='localhost' password=''" #potentially wrong password
+db = "dbname='Dis' user='felicia' host='localhost' password='myPassword'" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -174,6 +174,26 @@ def favorite():
     length = len(favs)
     return render_template("Favorites.html", games=favs, length=length, username = username)
 
+@app.route("/wishlist")
+def wishlist():
+    cur = conn.cursor()
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    
+    username = session['username']
+
+    sql1 = f'''
+    SELECT vg.title, vg.releasedate, vg.developer, vg.publisher, vg.genres, vg.productrating, vg.userscore, vg.userratingscount, vg.id 
+    FROM wishlist f
+    JOIN video_games vg ON CAST(f.id AS INTEGER) = vg.id 
+    WHERE f.username = '{username}'
+    '''
+
+    cur.execute(sql1)
+    wish = cur.fetchall()
+    length = len(wish)
+    return render_template("wishList.html", games=wish, length=length, username = username)
+
 
 @app.route("/games")
 def videogames():
@@ -207,6 +227,12 @@ def gamepage(gameid):
                 cur.execute(sql1)
             elif action == 'remove':
                 sql1 = f'''delete from favorites where id = '{gameid}' and username = '{username}' '''
+                cur.execute(sql1)
+            if action == 'addWish':
+                sql1 = f'''insert into wishlist(id, username) values ('{gameid}', '{username}') '''
+                cur.execute(sql1)
+            elif action == 'removeWish':
+                sql1 = f'''delete from wishlist where id = '{gameid}' and username = '{username}' '''
                 cur.execute(sql1)
             conn.commit()
         except:
