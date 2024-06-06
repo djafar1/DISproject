@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS video_games (
     Genres VARCHAR(100),
     ProductRating VARCHAR(100),
     UserScore FLOAT,
-    UserRatingsCount INT
-    id INT
+    UserRatingsCount INT,
+    id INT,
     CONSTRAINT games PRIMARY KEY (id)
 
 );

@@ -1,8 +1,15 @@
 {% extends "navbar.html" %} {% block content %}
+<h1>games database!</h1>
+<div class="querybox">
+  <a href="/games/{{randomNumber}}">
+    <input type="submit" id="button" value="Random" />
+  </a>
+</div>
+
+{% extends "navbar.html" %} {% block content %}
 <h1>Video gamedata base!</h1>
   <div class="games">
     {%for i in range(0,length)%}
-    <a href="/games/{{games[i][8]}}">
       <div class="game">
         <div class="container">
           <h4><b>Title of the game:<br> {{games[i][0]}}</b></h4>

@@ -49,8 +49,8 @@ def home():
     #Getting 10 random rows from Attributes
     tenrand = '''select * from Attributes order by random() limit 10;'''
     cur.execute(tenrand)
-    punks = list(cur.fetchall())
-    length = len(punks)
+    games = list(cur.fetchall())
+    length = len(games)
 
     #Getting random id from table Attributes
     randint = '''select id from Attributes order by random() limit 1;'''
@@ -60,49 +60,63 @@ def home():
         return render_template('login.html')
     else:
         if request.method == "POST":
-            input_gender = request.form["radio"].lower()
-            input_type = request.form["radiotype"].lower()
-            input_skin = request.form["radioskin"].lower()
-
-            input_count = request.form["accessCount"] or -1
-            input_access = request.form["access"].lower() or "NaN"
-
-            input_id = request.form["punkid"].lower() or ""
+            input_title = request.form["RAtitle"].lower()
+            input_genre = request.form["RAgenre"].lower()
+            input_releaseDate = request.form["RAreleaseDate"].lower()
+            input_developer = request.form["RAdeveloper"].lower()
+            input_publisher = request.form["RApublisher"].lower()
+            input_userScore = request.form["RAuserScore"].lower()
+            input_userRatingsCount = request.form["RAuserRatingsCount"].lower()
+            input_id = request.form["RAid"].lower()
+            input_id = request.form["gameid"].lower() or ""
 
             if input_id != "":
                 input_id = input_id.zfill(4)
-                return redirect(url_for("punkpage", punkid=input_id))
-            return redirect(url_for("querypage", gender=input_gender, types=input_type, skin=input_skin, access=input_access, count=input_count))
+                return redirect(url_for("gamepage", gameid=input_id))
+            return redirect(url_for("querypage", title = input_title, genre=input_genre, releaseDate=input_releaseDate, developer=input_developer, publisher=input_publisher,
+                                    userScore=input_userScore, userRatingsCount=input_userRatingsCount, id=input_id))
             
-        length = len(punks)
-        return render_template("index.html", content=punks, length=length, randomNumber = randomNumber)
+        length = len(games)
+        return render_template("index.html", content=games, length=length, randomNumber = randomNumber)
 
-@app.route("/punks/<gender>/<types>/<skin>/<count>/<access>")
-def querypage(gender, types, skin, count, access):
+@app.route("/games/<title>/<genre>/<releaseDate>/<developer>/<publisher>/<userScore>/<userRatingsCount>/<id>")
+def querypage(title, genre, releaseDate, developer, publisher, userScore, userRatingsCount, id):
     cur = conn.cursor()
     rest = 0
 
     sqlcode = f'''select * from Attributes where '''
-    if gender != "both":
-        sqlcode += f''' gender = '{gender}' and'''
+    if title != "all":
+        sqlcode += f''' title = '{title}' and'''
         rest += 1
-
-    if types != "all":
-        sqlcode += f''' type = '{types}' and'''
-        rest += 1
-
-    if skin != "all":
-        sqlcode += f''' skin_tone = '{skin}' and'''
-        rest += 1
-
-    if access != "NaN":
-        rest += 1
-        sqlcode += f''' accessories ~* '{access}' and'''
     
-    if int(count) != -1:
+    if genre != "all":
+        sqlcode += f''' genre = '{genre}' and'''
         rest += 1
-        sqlcode += f''' count = '{count}' and'''
 
+    if releaseDate != "all":
+        sqlcode += f''' releaseDate = '{releaseDate}' and'''
+        rest += 1
+
+    if developer != "all":
+        sqlcode += f''' developer = '{developer}' and'''
+        rest += 1
+
+    if publisher != "all":
+        sqlcode += f''' publisher = '{publisher}' and'''
+        rest += 1
+
+    if userScore != "all":
+        sqlcode += f''' userScore = '{userScore}' and'''
+        rest += 1
+        
+    if userRatingsCount != "all":
+        sqlcode += f''' userRatingsCount = '{userRatingsCount}' and'''
+        rest += 1
+        
+    if id != "all":
+        sqlcode += f''' id = '{id}' and'''
+        rest += 1
+        
     if rest == 0: 
         sqlcode = f''' select * from Attributes'''
 
@@ -112,10 +126,9 @@ def querypage(gender, types, skin, count, access):
     cur.execute(sqlcode)
     ct = list(cur.fetchall())
 
-
     length = len(ct)
 
-    return render_template("cryptoquery.html", content=ct, length=length)
+    return render_template("videogames.html", content=ct, length=length)
 
 
 @app.route('/login', methods=['POST'])
@@ -138,10 +151,6 @@ def do_admin_login():
     return redirect(url_for("home"))
 
 
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
-
 @app.route("/logout")
 def logout():
     session['logged_in'] = False
@@ -155,15 +164,28 @@ def profile():
     
     username = session['username']
 
-    sql1 = f'''select id, type, gender, skin_tone, count, accessories from favorites natural join attributes where username = '{username}' '''
+    sql1 = f'''select title, releasedate, developer, publisher, genres, productrating, userscore, usertatingscount, id 
+    from favorites natural join attributes where username = '{username}' '''
     cur.execute(sql1)
     favs = cur.fetchall()
     length = len(favs)
     return render_template("profile.html", content=favs, length=length, username = username)
 
 
-@app.route("/punk/<punkid>", methods=["POST", "GET"])
-def punkpage(punkid):
+@app.route("/games")
+def videogames():
+    cur = conn.cursor()
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    
+    sql = '''SELECT * FROM video_games'''
+    cur.execute(sql)
+    games = cur.fetchall()
+    length = len(games)
+    return render_template("videogames.html", games = games, length=length)
+
+@app.route("/games/<gameid>", methods=["POST", "GET"])
+def gamepage(gameid):
     cur = conn.cursor()
     """
     Instead of PunkID we would have our database content
@@ -176,44 +198,19 @@ def punkpage(punkid):
         # Add til favourite
         username = session['username']
         try: 
-            sql1 = f'''insert into favorites(id, username) values ('{punkid}', '{username}') '''
+            sql1 = f'''insert into favorites(id, username) values ('{gameid}', '{username}') '''
             cur.execute(sql1)
             conn.commit()
         except:
             conn.rollback()
-
-
-
-    req = "https://cryptopunks.app/cryptopunks/details/"+ punkid
-    response = requests.get(req)
-    soup = BeautifulSoup(response.content, 'html.parser')
-    rows = soup.select("table.ms-rteTable-default tr")
-    pricelist = str(soup.find(class_="punk-history-row-bid")).split('\n')
-    if len(pricelist) < 5:
-        price = "10Ξ ($18,000)"
-    else:
-        price =pricelist[4].replace('</td>', '').replace('<td>','')
-
-    sql1 = f''' select * from attributes where id = '{punkid}' '''
+            
+    sql1 = f''' select * from video_games where id = '{gameid}' '''
 
     cur.execute(sql1)
 
     ct = cur.fetchone()
 
-    return render_template("cryptopunk.html", content=ct, price=price)
-
-
-@app.route("/videogames")
-def videogames():
-    cur = conn.cursor()
-    if not session.get('logged_in'):
-        return render_template('login.html')
-    
-    sql = '''SELECT * FROM video_games'''
-    cur.execute(sql)
-    games = cur.fetchall()
-    length = len(games)
-    return render_template("videogames.html", games = games, length=length)
+    return render_template("gameProfile.html", content=ct, games=ct)
 
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
