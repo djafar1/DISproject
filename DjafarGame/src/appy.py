@@ -79,7 +79,7 @@ def home():
                 input_id = input_id.zfill(4)
                 return redirect(url_for("gamepage", gameid=input_id))
             return redirect(url_for("querypage", title = input_title, genre=input_genre, releaseDate=input_releaseDate, developer=input_developer, publisher=input_publisher,
-                                    userScore=input_userScore, userRatingsCount=input_userRatingsCount, input_id=))
+                                    userScore=input_userScore, userRatingsCount=input_userRatingsCount, id=input_id))
             
         length = len(games)
         return render_template("index.html", content=games, length=length, randomNumber = randomNumber)
