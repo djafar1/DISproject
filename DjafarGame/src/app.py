@@ -12,7 +12,7 @@ import random
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='GameThing' user='postgres' host='localhost' password='hmx89ymf'" #potentially wrong password
+db = "dbname='postgres' user='postgres' host='localhost' password=''" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -154,8 +154,8 @@ def logout():
     session['logged_in'] = False
     return home()
 
-@app.route("/profile")
-def profile():
+@app.route("/favorite")
+def favorite():
     cur = conn.cursor()
     if not session.get('logged_in'):
         return render_template('login.html')
@@ -200,9 +200,14 @@ def gamepage(gameid):
     if request.method == "POST":
         # Add til favourite
         username = session['username']
+        action = request.form.get('action')
         try: 
-            sql1 = f'''insert into favorites(id, username) values ('{gameid}', '{username}') '''
-            cur.execute(sql1)
+            if action == 'add':
+                sql1 = f'''insert into favorites(id, username) values ('{gameid}', '{username}') '''
+                cur.execute(sql1)
+            elif action == 'remove':
+                sql1 = f'''delete from favorites where id = '{gameid}' and username = '{username}' '''
+                cur.execute(sql1)
             conn.commit()
         except:
             conn.rollback()
@@ -210,7 +215,6 @@ def gamepage(gameid):
     sql1 = f''' select * from video_games where id = '{gameid}' '''
 
     cur.execute(sql1)
-
     ct = cur.fetchone()
 
     return render_template("gameProfile.html", content=ct, games=ct)
