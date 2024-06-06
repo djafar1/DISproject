@@ -1,0 +1,22 @@
+{% extends "navbar.html" %} {% block content %}
+<h1>Game title: {{content[0]}}!</h1>
+<div class="tablecontainer">
+  <div class="tableitem">
+    <h4>Attributes</h4>
+    <p class="card-text">Release Date: {{games[1]}}</p>
+    <p class="card-text">Developer: {{games[2]}}</p>
+    <p class="card-text">Publisher: {{games[3]}}</p>
+    <p class="card-text">Genres: {{games[4]}}</p>
+    <p class="card-text">Product Rating: {{games[5]}}</p>
+    <p class="card-text">User Score: {{games[6]}}</p>
+    <p class="card-text">User Ratings Count: {{games[7]}}</p>
+  </div>
+  <div class="tableitem">
+    <form action="" method="post" class="queryform2">
+      <div class="querybox">
+        <input type="submit" id="buttonAdd" value="Add favourite" />
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}
