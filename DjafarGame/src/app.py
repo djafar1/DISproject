@@ -68,7 +68,7 @@ def home():
             input_userScore = request.form["RAuserScore"].lower()
             input_userRatingsCount = request.form["RAuserRatingsCount"].lower()
             input_id = request.form["RAid"].lower()
-            input_id = request.form["gameid"].lower() or ""
+            input_id = request.form["gameid"].lower()
 
             if input_id != "":
                 input_id = input_id.zfill(4)
@@ -165,10 +165,12 @@ def profile():
     username = session['username']
 
     sql1 = f'''
-    SELECT title, releasedate, developer, publisher, genres, productrating, userscore, userratingscount, vg.id 
-    FROM favorites f, video_games vg 
-    WHERE f.username = '{username}' 
+    SELECT vg.title, vg.releasedate, vg.developer, vg.publisher, vg.genres, vg.productrating, vg.userscore, vg.userratingscount, vg.id 
+    FROM favorites f
+    JOIN video_games vg ON CAST(f.id AS INTEGER) = vg.id 
+    WHERE f.username = '{username}'
     '''
+
     cur.execute(sql1)
     favs = cur.fetchall()
     length = len(favs)
