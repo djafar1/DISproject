@@ -12,11 +12,18 @@
     <p class="card-text">User Ratings Count: {{games[7]}}</p>
   </div>
   <div class="tableitem">
-    <form action="" method="post" class="queryform2">
+    <!-- Form for adding to favourites -->
+    <form action="{{ gameid }}" method="post" class="queryform3">
       <div class="querybox">
-        <input type="submit" id="buttonAdd" value="Add favourite" />
+        <input type="hidden" name="action" value="add">
+        <input type="submit" id="buttonAdd" value="Add to Favourite" />
+      </div>
+    </form>
+    <form action="{{ gameid }}" method="post" class="queryform3">
+      <div class="querybox">
+        <input type="hidden" name="action" value="remove">
+        <input type="submit" id="buttonAdd" value="Remove" />
       </div>
     </form>
   </div>
-</div>
 {% endblock content %}
