@@ -185,6 +185,14 @@ p.card-text {
   align-items: center;
   background-color: #091833;
 }
+.querybox label {
+  display: block;
+  margin: 10px 0;
+}
+.querybox input, .querybox select {
+  margin-left: 10px;
+}
+
 
 .tablecontainer {
   display: grid;
