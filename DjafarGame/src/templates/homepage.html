@@ -1,24 +1,24 @@
 {% extends "navbar.html" %} {% block content %}
 <h1>Crypto Punk database!</h1>
 <div class="querybox">
-  <a href="/punk/{{randomNumber}}">
+  <a href="/games/{{randomNumber}}">
     <input type="submit" id="button" value="Random" />
   </a>
 </div>
 
-<form action="/games" method="get" class="queryform">
+<form action="" method="post" class="queryform">
   <!-- User Rating Dropdown -->
   <div class="querybox">
-    <select name="userRating" id="userRating">
-      <option value="all">All User Ratings</option>
-      <option value="7+">7+</option>
-      <option value="5-7">5-7</option>
-      <option value="<5">Less than 5</option>
-    </select>
+    Title<input type="RAtitle" name="RAtitle" id="all" value="all" /><br>
+    Genre<input type="RAgenre" name="RAgenre" id="all" value="all" />
+    ReleaseDate<input type="RAreleaseDate" name="RAreleaseDate" id="all" value="all" />
+    Developer<input type="RAdeveloper" name="RAdeveloper" id="all" value="all" />
+    Publisher<input type="RApublisher" name="RApublisher" id="all" value="all" />
   </div>
-
-  <!-- Submit Button -->
   <div class="querybox">
+    UserScore<input type="RAuserScore" name="RAuserScore" id="all" value="all" />
+    UserRatingsCount<input type="RAuserRatingsCount" name="RAuserRatingsCount" id="7" value="7" />
+    GameID<input type="gameid" name="gameid" id="" value="" />
     <input type="submit" id="button" value="Search" />
   </div>
 </form>

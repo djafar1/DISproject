@@ -12,7 +12,7 @@ import random
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='Dis' user='felicia' host='localhost' password='myPassword'" #potentially wrong password
+db = "dbname='GameThing' user='postgres' host='localhost' password='hmx89ymf'" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -73,16 +73,16 @@ def home():
                 input_id = input_id.zfill(4)
                 return redirect(url_for("gamepage", gameid=input_id))
             return redirect(url_for("querypage", title = input_title, genre=input_genre, releaseDate=input_releaseDate, developer=input_developer, publisher=input_publisher,
-                                    userScore=input_userScore, userRatingsCount=input_userRatingsCount, id=input_id))
+                                    userScore=input_userScore, userRatingsCount=input_userRatingsCount))
         length = len(games)
         return render_template("homepage.html", content=games, length=length, randomNumber = randomNumber)
 
-@app.route("/games/<title>/<genre>/<releaseDate>/<developer>/<publisher>/<userScore>/<userRatingsCount>/<id>")
-def querypage(title, genre, releaseDate, developer, publisher, userScore, userRatingsCount, id):
+@app.route("/games/<title>/<genre>/<releaseDate>/<developer>/<publisher>/<userScore>/<userRatingsCount>")
+def querypage(title, genre, releaseDate, developer, publisher, userScore, userRatingsCount):
     cur = conn.cursor()
     rest = 0
 
-    sqlcode = f'''select * from Attributes where '''
+    sqlcode = f'''select * from video_games where '''
     if title != "all":
         sqlcode += f''' title = '{title}' and'''
         rest += 1
@@ -111,12 +111,8 @@ def querypage(title, genre, releaseDate, developer, publisher, userScore, userRa
         sqlcode += f''' userRatingsCount = '{userRatingsCount}' and'''
         rest += 1
         
-    if id != "all":
-        sqlcode += f''' id = '{id}' and'''
-        rest += 1
-        
     if rest == 0: 
-        sqlcode = f''' select * from Attributes'''
+        sqlcode = f''' select * from  video_games '''
 
     else: 
         sqlcode  = sqlcode[:-3]
@@ -126,7 +122,7 @@ def querypage(title, genre, releaseDate, developer, publisher, userScore, userRa
 
     length = len(ct)
 
-    return render_template("videogames.html", content=ct, length=length)
+    return render_template("videogames.html", games = ct, length=length)
 
 
 @app.route('/login', methods=['POST'])
