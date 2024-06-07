@@ -11,33 +11,32 @@
     <p class="card-text">User Score: {{games[6]}}</p>
     <p class="card-text">User Ratings Count: {{games[7]}}</p>
   </div>
-  <div class="tableitem">
-    <!-- Form for adding to favourites -->
-    <form action="{{ gameid }}" method="post" class="queryform3">
-      <div class="querybox">
-        <input type="hidden" name="action" value="add">
-        <input type="submit" id="buttonAdd" value="Add to Favourite" />
-      </div>
-    </form>
-    <form action="{{ gameid }}" method="post" class="queryform3">
-      <div class="querybox">
-        <input type="hidden" name="action" value="remove">
-        <input type="submit" id="buttonAdd" value="Remove from favourite" />
-      </div>
-    </form>
-  </div>
-    <div class="tableitem">
-    <form action="{{ gameid }}" method="post" class="queryform3">
-      <div class="querybox">
-        <input type="hidden" name="action" value="addWish">
-        <input type="submit" id="buttonAdd" value="Add to wishlist" />
-      </div>
-    </form>
-    <form action="{{ gameid }}" method="post" class="queryform3">
-      <div class="querybox">
-        <input type="hidden" name="action" value="removeWish">
-        <input type="submit" id="buttonAdd" value="Remove from wishlist" />
-      </div>
-    </form>
-  </div>
+</div>
+<div class="forms-container">
+  <!-- Form for adding to favourites -->
+  <form action="{{ gameid }}" method="post" class="queryform3">
+    <div class="querybox">
+      <input type="hidden" name="action" value="add">
+      <input type="submit" id="buttonAdd" value="Add to Favourite" />
+    </div>
+  </form>
+  <form action="{{ gameid }}" method="post" class="queryform3">
+    <div class="querybox">
+      <input type="hidden" name="action" value="remove">
+      <input type="submit" id="buttonAdd" value="Remove from favourite" />
+    </div>
+  </form>
+  <form action="{{ gameid }}" method="post" class="queryform4">
+    <div class="querybox">
+      <input type="hidden" name="action" value="addWish">
+      <input type="submit" id="buttonAdd" value="Add to wishlist" />
+    </div>
+  </form>
+  <form action="{{ gameid }}" method="post" class="queryform4">
+    <div class="querybox">
+      <input type="hidden" name="action" value="removeWish">
+      <input type="submit" id="buttonAdd" value="Remove from wishlist" />
+    </div>
+  </form>
+</div>
 {% endblock content %}
