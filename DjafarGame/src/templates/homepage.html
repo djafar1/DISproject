@@ -5,16 +5,25 @@
     <input type="submit" id="button" value="Random" />
   </a>
 
-<form action="/games" method="get" class="queryform">
+<form action="" method="post" class="queryform">
   <!-- User Rating Dropdown -->
-    <select name="userRating" id="button">
-      <option value="all">All User Ratings</option>
-      <option value="7+">7+</option>
-      <option value="5-7">5-7</option>
-      <option value="<5">Less than 5</option>
-    </select>
 
-  <!-- Submit Button -->
+  <div class="querybox">
+    Title<input type="RAtitle" name="RAtitle" id="all" value="all" /><br>
+    Genre<input type="RAgenre" name="RAgenre" id="all" value="all" />
+    ReleaseDate<input type="RAreleaseDate" name="RAreleaseDate" id="all" value="all" />
+    Developer<input type="RAdeveloper" name="RAdeveloper" id="all" value="all" />
+    Publisher<input type="RApublisher" name="RApublisher" id="all" value="all" />
+  </div>
+  <div class="querybox">
+    UserScore<select type = "RAuserScore" id="RAuserScore" name="RAuserScore">
+        <option value="7">7</option>
+        <option value="6">6</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
+    UserRatingsCount<input type="RAuserRatingsCount" name="RAuserRatingsCount" id="all" value="all" />
+    GameID<input type="gameid" name="gameid" id="" value="" />
     <input type="submit" id="button" value="Search" />
 </div>
 
