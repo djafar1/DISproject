@@ -172,8 +172,26 @@ p.card-text {
   width: 100px;  
   image-rendering: pixelated;
 }
+.forms-container {
+  display: flex;
+  justify-content: space-between; /* Positions one element on the left, the other on the right */
+  width: 100%; /* Ensures the container spans the full width of its parent */
+}
 
+.queryform3, .queryform4 {
+  width: 100%; /* Only as wide as necessary */
+  display: flex; /* If you have multiple items inside and want them laid out flexibly */
+}
+
+.queryform4 {
+  margin-right: auto; /* Pushes everything else to the right */
+}
+
+.queryform3 {
+  margin-left: auto; /* Pushes everything else to the left */
+}
 .queryform {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #091833;
 }
 .querybox{
@@ -195,15 +213,18 @@ p.card-text {
 
 
 .tablecontainer {
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   grid-gap: 4rem;
   padding-top: 1rem;
+  padding-bottom: 2rem;
+  margin: 0 auto;
 }
 .tableitem {
   border: 4px solid #28A745;
   padding: 1rem;
+  margin: 0 auto; 
+  text-align: center; 
 }
 .image {
   height: 300px;
