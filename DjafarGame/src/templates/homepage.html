@@ -1,13 +1,13 @@
 {% extends "navbar.html" %} {% block content %}
-<h1>Crypto Punk database!</h1>
+<h1>GameHub</h1>
 <div class="querybox">
   <a href="/games/{{randomNumber}}">
     <input type="submit" id="button" value="Random" />
   </a>
-</div>
 
 <form action="" method="post" class="queryform">
   <!-- User Rating Dropdown -->
+
   <div class="querybox">
     Title<input type="RAtitle" name="RAtitle" id="all" value="all" /><br>
     Genre<input type="RAgenre" name="RAgenre" id="all" value="all" />
@@ -25,27 +25,22 @@
     UserRatingsCount<input type="RAuserRatingsCount" name="RAuserRatingsCount" id="all" value="all" />
     GameID<input type="gameid" name="gameid" id="" value="" />
     <input type="submit" id="button" value="Search" />
-  </div>
+</div>
+
 </form>
 
 <div class="cards">
-  {%for i in range(0,length)%}
-  <a href="/games/{{content[i][8]}}">
+  {% for i in range(0, length) %}
+  <a href="/games/{{ content[i][8] }}" class="card-link">
     <div class="card">
       <div class="container">
-        <h4><b>Title of the game:<br> {{content[i][0]}}</b></h4>
-          <p class="card-text">Release Date: {{content[i][1]}}</p>
-          <p class="card-text">Developer: {{content[i][2]}}</p>
-          <p class="card-text">Publisher: {{content[i][3]}}</p>
-          <p class="card-text">Genres: {{content[i][4]}}</p>
-          <p class="card-text">Product Rating: {{content[i][5]}}</p>
-          <p class="card-text">User Score: {{content[i][6]}}</p>
-          <p class="card-text">User Ratings Count: {{content[i][7]}}</p>
-          <p class="card-text">Game id: {{content[i][8]}}</p>
-        </div>
+        <h4>{{ content[i][0] }}</h4>
+        <p class="card-text">Genres: {{ content[i][4] }}</p>
+        <p class="card-text">User Score: {{ content[i][6] }}</p>
       </div>
+    </div>
   </a>
-  {%endfor%}
+  {% endfor %}
 </div>
 
 {% endblock content %}
