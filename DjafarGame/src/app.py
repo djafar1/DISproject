@@ -12,7 +12,7 @@ import random
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='Dis' user='felicia' host='localhost' password='myPassword'" #potentially wrong password
+db = "dbname='GameThing' user='postgres' host='localhost' password='hmx89ymf'" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -57,6 +57,12 @@ def home():
     cur.execute(diffgenres)
     genres = list(cur.fetchall())
     lengthgenres = len(genres)
+    
+    #Getting all different release years:
+    diffyears = '''select DISTINCT EXTRACT(YEAR FROM ReleaseDate) as years FROM video_games ORDER by years DESC;'''
+    cur.execute(diffyears)
+    years = list(cur.fetchall())
+    lengthyears = len(years)
 
     #Getting random id from table Attributes
     randint = '''select id from video_games order by random() limit 1;'''
@@ -73,7 +79,8 @@ def home():
             return redirect(url_for("querypage", title = input_title, genre=input_genre, releaseDate=input_releaseDate,
                                     userScore=input_userScore))
         length = len(games)
-        return render_template("homepage.html", content=games, length=length, randomNumber = randomNumber, genres = genres, lengthgenres = lengthgenres)
+        return render_template("homepage.html", content=games, length=length, randomNumber = randomNumber, genres = genres, lengthgenres = lengthgenres,
+                               years = years, lengthyears = lengthyears)
 
 @app.route("/games/<title>/<genre>/<releaseDate>/<userScore>")
 def querypage(title, releaseDate, genre, userScore):
@@ -90,7 +97,7 @@ def querypage(title, releaseDate, genre, userScore):
         rest += 1
 
     if releaseDate != "all":
-        sqlcode += f''' releaseDate = '{releaseDate}' and'''
+        sqlcode += f''' EXTRACT(YEAR FROM ReleaseDate) = '{releaseDate}' and'''
         rest += 1
 
     if userScore != "all":
