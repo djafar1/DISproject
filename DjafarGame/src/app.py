@@ -51,6 +51,12 @@ def home():
     cur.execute(tenrand)
     games = list(cur.fetchall())
     length = len(games)
+    
+    #Getting all different genres
+    diffgenres = '''select DISTINCT genres FROM video_games;'''
+    cur.execute(diffgenres)
+    genres = list(cur.fetchall())
+    lengthgenres = len(genres)
 
     #Getting random id from table Attributes
     randint = '''select id from video_games order by random() limit 1;'''
@@ -67,7 +73,7 @@ def home():
             return redirect(url_for("querypage", title = input_title, genre=input_genre, releaseDate=input_releaseDate,
                                     userScore=input_userScore))
         length = len(games)
-        return render_template("homepage.html", content=games, length=length, randomNumber = randomNumber)
+        return render_template("homepage.html", content=games, length=length, randomNumber = randomNumber, genres = genres, lengthgenres = lengthgenres)
 
 @app.route("/games/<title>/<genre>/<releaseDate>/<userScore>")
 def querypage(title, releaseDate, genre, userScore):
@@ -80,9 +86,9 @@ def querypage(title, releaseDate, genre, userScore):
         rest += 1
     
     if genre != "all":
-        sqlcode += f''' genre = '{genre}' and'''
+        sqlcode += f''' genres ILIKE '%{genre}%' and'''
         rest += 1
-    
+
     if releaseDate != "all":
         sqlcode += f''' releaseDate = '{releaseDate}' and'''
         rest += 1
