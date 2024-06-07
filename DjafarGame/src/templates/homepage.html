@@ -11,12 +11,20 @@
 <form action="" method="post" class="queryform">
   <div class="querybox">
     <label>Title: <input type="text" name="RAtitle" value ="all"></label>
-    <label>Genre: <input type="text" name="RAgenre" value ="all"></label>
+    <label>Genre:       
+    <select type = "text" id = "RAgenre" name="RAgenre">
+        <option value="all">All</option>
+        {% for i in range(0, lengthgenres) %}
+          <option value="{{ genres[i][0] }}">{{ genres[i][0] }}</option>
+        {% endfor %}
+      </select>
+    </label>
     <label>Release Date: <input type="text" name="RAreleaseDate" value ="all"></label>
     <label>Developer: <input type="text" name="RAdeveloper" value ="all"></label>
     <label>Publisher: <input type="text" name="RApublisher" value ="all"></label>
   </div>
   <div class="querybox">
+    <label>
     UserScore<select type = "RAuserScore" id="RAuserScore" name="RAuserScore">
         <option value="all">all</option>
         <option value="0-3">0-3</option>
