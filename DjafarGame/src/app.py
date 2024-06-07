@@ -104,7 +104,14 @@ def querypage(title, genre, releaseDate, developer, publisher, userScore, userRa
         rest += 1
 
     if userScore != "all":
-        sqlcode += f''' userScore = '{userScore}' and'''
+        if userScore == "0-3":
+            sqlcode += '''userScore BETWEEN 0 AND 3 and'''
+        elif userScore == "3-6":
+            sqlcode += '''userScore BETWEEN 3 AND 6 and '''
+        elif userScore == "6-9":
+            sqlcode += '''userScore BETWEEN 6 AND 9 and'''
+        else:
+            sqlcode += f''' userScore = '{userScore}' and'''
         rest += 1
         
     if userRatingsCount != "all":
