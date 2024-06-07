@@ -1,31 +1,34 @@
 {% extends "navbar.html" %} {% block content %}
 <h1>GameHub</h1>
+<!-- Random Button -->
 <div class="querybox">
-  <a href="/games/{{randomNumber}}">
-    <input type="submit" id="button" value="Random" />
+  <a href="/games/{{ randomNumber }}">
+    <button type="button">Random</button>
   </a>
+</div>
 
-<form action="" method="post" class="queryform">
-  <!-- User Rating Dropdown -->
-
+<!-- Search Form -->
+<form action="/search" method="post" class="queryform">
   <div class="querybox">
-    Title<input type="RAtitle" name="RAtitle" id="all" value="all" /><br>
-    Genre<input type="RAgenre" name="RAgenre" id="all" value="all" />
-    ReleaseDate<input type="RAreleaseDate" name="RAreleaseDate" id="all" value="all" />
-    Developer<input type="RAdeveloper" name="RAdeveloper" id="all" value="all" />
-    Publisher<input type="RApublisher" name="RApublisher" id="all" value="all" />
+    <label>Title: <input type="text" name="RAtitle"></label>
+    <label>Genre: <input type="text" name="RAgenre"></label>
+    <label>Release Date: <input type="text" name="RAreleaseDate"></label>
+    <label>Developer: <input type="text" name="RAdeveloper"></label>
+    <label>Publisher: <input type="text" name="RApublisher"></label>
   </div>
+  
   <div class="querybox">
     UserScore<select type = "RAuserScore" id="RAuserScore" name="RAuserScore">
         <option value="0-3">0-3</option>
         <option value="3-6">3-6</option>
         <option value="6-9">6-9</option>
-      </select>
-    UserRatingsCount<input type="RAuserRatingsCount" name="RAuserRatingsCount" id="all" value="all" />
-    GameID<input type="gameid" name="gameid" id="" value="" />
-    <input type="submit" id="button" value="Search" />
-</div>
 
+      </select>
+    </label>
+    <label>User Ratings Count: <input type="text" name="RAuserRatingsCount"></label>
+    <label>Game ID: <input type="text" name="gameid"></label>
+    <input type="submit" value="Search">
+  </div>
 </form>
 
 <div class="cards">
