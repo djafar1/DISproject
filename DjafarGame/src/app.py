@@ -12,7 +12,7 @@ import random
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='GameThing' user='postgres' host='localhost' password='hmx89ymf'" #potentially wrong password
+db = "dbname='Dis' user='felicia' host='localhost' password='myPassword'" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -63,43 +63,28 @@ def home():
             input_title = request.form["RAtitle"].lower()
             input_genre = request.form["RAgenre"].lower()
             input_releaseDate = request.form["RAreleaseDate"].lower()
-            input_developer = request.form["RAdeveloper"].lower()
-            input_publisher = request.form["RApublisher"].lower()
             input_userScore = request.form["RAuserScore"].lower()
-            input_userRatingsCount = request.form["RAuserRatingsCount"].lower()
-            input_id = request.form["gameid"].lower()
-
-            if input_id != "":
-                input_id = input_id.zfill(4)
-                return redirect(url_for("gamepage", gameid=input_id))
-            return redirect(url_for("querypage", title = input_title, genre=input_genre, releaseDate=input_releaseDate, developer=input_developer, publisher=input_publisher,
-                                    userScore=input_userScore, userRatingsCount=input_userRatingsCount))
+            return redirect(url_for("querypage", title = input_title, genre=input_genre, releaseDate=input_releaseDate,
+                                    userScore=input_userScore))
         length = len(games)
         return render_template("homepage.html", content=games, length=length, randomNumber = randomNumber)
 
-@app.route("/games/<title>/<genre>/<releaseDate>/<developer>/<publisher>/<userScore>/<userRatingsCount>")
-def querypage(title, genre, releaseDate, developer, publisher, userScore, userRatingsCount):
+@app.route("/games/<title>/<genre>/<releaseDate>/<userScore>")
+def querypage(title, releaseDate, genre, userScore):
     cur = conn.cursor()
     rest = 0
 
     sqlcode = f'''select * from video_games where '''
-    if title != "all":
+    if title != " " :
         sqlcode += f''' title ILIKE '%{title}%' and'''
         rest += 1
+    
     if genre != "all":
         sqlcode += f''' genre = '{genre}' and'''
         rest += 1
-
+    
     if releaseDate != "all":
         sqlcode += f''' releaseDate = '{releaseDate}' and'''
-        rest += 1
-
-    if developer != "all":
-        sqlcode += f''' developer = '{developer}' and'''
-        rest += 1
-
-    if publisher != "all":
-        sqlcode += f''' publisher = '{publisher}' and'''
         rest += 1
 
     if userScore != "all":
@@ -112,11 +97,7 @@ def querypage(title, genre, releaseDate, developer, publisher, userScore, userRa
         else:
             sqlcode += f''' userScore = '{userScore}' and'''
         rest += 1
-        
-    if userRatingsCount != "all":
-        sqlcode += f''' userRatingsCount = '{userRatingsCount}' and'''
-        rest += 1
-        
+
     if rest == 0: 
         sqlcode = f''' select * from  video_games '''
 

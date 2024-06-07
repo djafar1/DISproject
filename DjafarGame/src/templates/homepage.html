@@ -10,22 +10,18 @@
 <!-- Search Form -->
 <form action="" method="post" class="queryform">
   <div class="querybox">
-    <label>Title: <input type="text" name="RAtitle" value ="all"></label>
+    <label>Title: <input type="text" name="RAtitle" value =" "></label>
     <label>Genre: <input type="text" name="RAgenre" value ="all"></label>
     <label>Release Date: <input type="text" name="RAreleaseDate" value ="all"></label>
-    <label>Developer: <input type="text" name="RAdeveloper" value ="all"></label>
-    <label>Publisher: <input type="text" name="RApublisher" value ="all"></label>
   </div>
   <div class="querybox">
-    UserScore<select type = "RAuserScore" id="RAuserScore" name="RAuserScore">
+    <label>UserScore:<select type = "RAuserScore" id="RAuserScore" name="RAuserScore">
         <option value="all">all</option>
         <option value="0-3">0-3</option>
         <option value="3-6">3-6</option>
         <option value="6-9">6-9</option>
       </select>
     </label>
-    <label>User Ratings Count: <input type="text" name="RAuserRatingsCount" value ="all"></label>
-    <label>Game ID: <input type="gameid" name="gameid" value =""></label>
     <input type="submit" value="Search">
   </div>
 </form>
