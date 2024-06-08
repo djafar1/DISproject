@@ -14,6 +14,7 @@
 }
 
 
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -35,11 +36,11 @@ li a {
 }
 
 li a:hover:not(.active) {
-  color: #007BFF;
+  color: #011f40;
 }
 
 body {
-  background: #712bd9;
+  background: #220350;
   margin-top: 10px;
   margin-left: 100px;
   margin-right: 100px;
@@ -174,21 +175,21 @@ p.card-text {
 }
 .forms-container {
   display: flex;
-  justify-content: space-between; /* Positions one element on the left, the other on the right */
-  width: 100%; /* Ensures the container spans the full width of its parent */
+  justify-content: space-between; 
+  width: 100%;
 }
 
 .queryform3, .queryform4 {
-  width: 100%; /* Only as wide as necessary */
-  display: flex; /* If you have multiple items inside and want them laid out flexibly */
+  width: 100%; 
+  display: flex; 
 }
 
 .queryform4 {
-  margin-right: auto; /* Pushes everything else to the right */
+  margin-right: auto; 
 }
 
 .queryform3 {
-  margin-left: auto; /* Pushes everything else to the left */
+  margin-left: auto; 
 }
 .queryform {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -221,7 +222,8 @@ p.card-text {
   margin: 0 auto;
 }
 .tableitem {
-  border: 4px solid #28A745;
+  background-color: #1e1e1e;
+  border: 4px solid #007BFF;
   padding: 1rem;
   margin: 0 auto; 
   text-align: center; 
@@ -253,20 +255,20 @@ p.card-text {
   grid-gap: 1rem;
 }
 .card-link {
-  width: 100%; /* Full width to make clickable area larger */
-  text-decoration: none; /* Removes underline from links */
-  color: inherit; /* Inherits color from parent for consistency */
+  width: 100%; 
+  text-decoration: none; 
+  color: inherit; 
 }
 
 .card {
-  background-color: #1e1e1e; /* Dark background for the card */
-  color: white; /* White text color */
-  margin: 10px auto; /* Center the card horizontally */
-  padding: 20px; /* Padding inside the card */
-  width: 80%; /* Adjust width or set max-width for larger screens */
-  border-radius: 8px; /* Optional: rounded corners */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Adds shadow for depth */
-  border: 4px solid white; /* White colored edge */
+  background-color: #1e1e1e; 
+  color: white; 
+  margin: 10px auto;
+  padding: 20px; 
+  width: 80%; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+  border: 4px solid white; 
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -285,27 +287,32 @@ p.card-text {
 
 .game {
   /* Add shadows to create the "card" effect */
-  border: 4px solid #007BFF;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: #1e1e1e;
+  border: 4px solid white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
   transition: 0.3s;
   width: 300px;
   height: 450px;
 }
 
-/* On mouse-over, add a deeper shadow */
 .game:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   border: 4px solid #28A745;
 }
 
-/* Add some padding inside the card container */
 .container {
   text-align: center;
   display: flex;
-  flex-direction: column; /* Aligns all child p elements in a column */
+  flex-direction: column; 
 }
 .container2{
   background-color: #091833;
   padding: 2px 16px;
   height: 100px;
+}
+.newbody {
+  background: #5d96d4;
+  margin-top: 10px;
+  height:800px;
+  font-family: 'Times New Roman', Times, serif;
 }

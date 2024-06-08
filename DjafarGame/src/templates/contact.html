@@ -1,16 +1,59 @@
+<link rel="stylesheet" href="/static/login.css" type="text/css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Jost:wght@100&family=Press+Start+2P&display=swap"
+	rel="stylesheet"
+/>
 {% extends "navbar.html" %} {% block content %}
-<div class="contact">
-  <div class="contactUser">
-  <img src="/static/images/0075.png" alt="Avatar" class="image2">
-  <h3 class="contactText">Daniel Kofoed - bxm615@alumni.ku.dk</h3>
-  </div>
-  <div class="contactUser">
-  <img src="/static/images/0069.png" alt="Avatar" class="image2">
-  <h3 class="contactText">Romal Sadat - rosa@di.ku.dk</h3>
-  </div>
-  <div class="contactUser">
-  <img src="/static/images/2439.png" alt="Avatar" class="image2">
-  <h3 class="contactText">Thor Simonsen - zvr697@alumni.ku.dk</h3>
-  </div>
+<div class="newbody">
+{% with messages = get_flashed_messages() %}
+  {% if messages == ' ' %}
+    <div class="flash-messages" style="display: none;">
+  {% elif messages %}
+    <div class="flash-messages" style="display: box;">
+      {% for message in messages %}
+        <div class="alert">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+  <form action="/contact" method="POST">
+    <div class="login">
+      <div class="mainDIV">
+        <div class="middleDIV">
+          <div class="rightDIV2">
+          <img src="/static/images/clouds.png" alt="Avatar" class="image" />
+        </div> 
+        <div class="leftDIV2">
+          <img src="/static/images/man.png" alt="Avatar" class="image" />
+        </div>
+      </div>
+      </div>
+      <div class="login-screen">
+        <div class="app-title">
+          <h1>Sign up for our newsletter!</h1>
+        </div>
+        <div class="login-form">
+          <div class="control-group">
+            <input
+              type="text"
+              class="login-field"
+              value=""
+              placeholder="email"
+              name="email"
+            />
+            <label class="login-field-icon fui-lock" for="email"></label>
+          </div>
+          <input
+            type="submit"
+            value="Sign up"
+            class="btn btn-primary btn-large btn-block"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 {% endblock content %}
+
