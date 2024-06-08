@@ -1,25 +1,37 @@
-# NFT database - Track your favourite punk!
-![](tmp/nftpic.PNG)
+# Setting up the game database :
 
-# running dis-nft-project:
+You need to have a functional Python 3 installation to use the site. 
 
-Assumes a working Python 3 installation (with python=python3 and pip=pip3).
-
-(1) Run the code below to install the dependencies.
+1. First install all the dependencies using the code below
 >$ pip install -r requirements.txt
 
-(2) Initialize the database, by running the SQL files (Creating the necessary tables) 
-IMPORTANT: In the 'Create Attributes.SQL' change the directory to the full path of the 'attributes.csv' file. 
+2. Initialize the 5 necessary database, by running the SQL files
+	  psql -d{database} -U{user} -f Favorites.sql
+	  psql -d{database} -U{user} -f WishList.sql
+	  psql -d{database} -U{user} -f Email.sql
+	  psql -d{database} -U{user} -f Create VideoGame.sql
+	  psql -d{database} -U{user} -f Create Users.sql
+ 
 
-(3) In the app.py-file, set your own database username and password
+3. Go into the app.py file and set your own database, username and password
 
-(4) Run Web-App
+4. Then you can run Web-App by using the code below
 >$ python src/app.py
 
 
 ----------------------------------------------------------------------------------------------
 
 # How to use the application:
+
+1. Create an account 
+2. Change password (UPDATE SQL is used he re)
+3. login
+	if the password is wrong you cant log in
+4. frontpage filters (SELECT)
+	we used filters with drop down menues and a search bar
+5. vaorites and wishlist pages (DELETE and INSERT)
+6. contact page (ER is used here)
+	you can aónly use @alumni.ku.dk mails 
 
 (1) Create account / You start by pressing the 'Create Account' button, you then get to page where you choose your username and password.
 
