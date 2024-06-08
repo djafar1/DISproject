@@ -19,7 +19,14 @@
         {% endfor %}
       </select>
     </label>
-    <label>Release Date: <input type="text" name="RAreleaseDate" value ="all"></label>
+    <label>Release Date: 
+    <select type = "text" id = "RAreleaseDate" name="RAreleaseDate">
+        <option value="all">All</option>
+        {% for i in range(0, lengthyears) %}
+          <option value="{{ years[i][0] }}">{{ years[i][0] }}</option>
+        {% endfor %}
+    </select> 
+    </label>
   </div>
   <div class="querybox">
     <label>UserScore:<select type = "RAuserScore" id="RAuserScore" name="RAuserScore">
