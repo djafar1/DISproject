@@ -241,10 +241,7 @@ def videogames():
 @app.route("/games/<gameid>", methods=["POST", "GET"])
 def gamepage(gameid):
     cur = conn.cursor()
-    """
-    Instead of PunkID we would have our database content
-    for 1 cryptopunk instead.
-    """
+
     if not session.get('logged_in'):
         return render_template('login.html')
 
