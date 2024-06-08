@@ -22,7 +22,7 @@
     <label>Release Date: 
     <select type = "text" id = "RAreleaseDate" name="RAreleaseDate">
         <option value="all">All</option>
-        {% for i in range(0, lengthyears) %}
+        {% for i in range(1, lengthyears) %}
           <option value="{{ years[i][0] }}">{{ years[i][0] }}</option>
         {% endfor %}
     </select> 
