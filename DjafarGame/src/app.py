@@ -251,16 +251,16 @@ def gamepage(gameid):
         action = request.form.get('action')
         try: 
             if action == 'add':
-                sql1 = f'''insert into favorites(id, username) values ('{gameid}', '{username}') '''
+                sql1 = f'''INSERT into favorites(id, username) values ('{gameid}', '{username}') '''
                 cur.execute(sql1)
             elif action == 'remove':
-                sql1 = f'''delete from favorites where id = '{gameid}' and username = '{username}' '''
+                sql1 = f'''DELETE from favorites where id = '{gameid}' and username = '{username}' '''
                 cur.execute(sql1)
             if action == 'addWish':
-                sql1 = f'''insert into wishlist(id, username) values ('{gameid}', '{username}') '''
+                sql1 = f'''INSERT into wishlist(id, username) values ('{gameid}', '{username}') '''
                 cur.execute(sql1)
             elif action == 'removeWish':
-                sql1 = f'''delete from wishlist where id = '{gameid}' and username = '{username}' '''
+                sql1 = f'''DELETE from wishlist where id = '{gameid}' and username = '{username}' '''
                 cur.execute(sql1)
             conn.commit()
         except:
