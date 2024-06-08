@@ -13,7 +13,7 @@ import re
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='GameThing' user='postgres' host='localhost' password='hmx89ymf'" #potentially wrong password
+db = "dbname='Dis' user='felicia' host='localhost' password='myPassword'" #potentially wrong password
 
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
@@ -38,7 +38,6 @@ def createaccount():
             return redirect(url_for("home"))
         else: 
             flash('Username already exists!')
-
 
     return render_template("createaccount.html")
 
@@ -146,6 +145,40 @@ def do_admin_login():
         flash('wrong password!')
     return redirect(url_for("home"))
 
+
+@app.route("/changepassword", methods=['GET', 'POST'])
+def changepassword():
+
+    if request.method == 'POST':
+        cur = conn.cursor()
+        username = request.form['username']
+        current_password = request.form['current_password']
+        new_password = request.form['new_password']
+        confirm_password = request.form['confirm_password']
+
+        if new_password != confirm_password:
+            flash("New passwords do not match!")
+            return redirect(url_for('changepassword'))
+
+        passtest = f''' SELECT * from users where username = '{username}' and password = '{current_password}' '''
+
+        cur.execute(passtest)
+
+        ifcool = len(cur.fetchall()) != 0
+
+        if ifcool:
+            sql1 = "UPDATE users SET password = %s WHERE username = %s"
+            cur.execute(sql1,  (new_password, username))
+            conn.commit()
+            flash("Password successfully changed!")
+            session.pop('logged_in', None)
+            session.pop('username', None)
+            return redirect(url_for('home'))
+        else:
+            flash("Current password is incorrect!")
+            return redirect(url_for('changepassword'))
+
+    return render_template('changepassword.html')
 
 @app.route("/logout")
 def logout():

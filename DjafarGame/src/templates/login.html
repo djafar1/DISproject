@@ -6,14 +6,23 @@
 	rel="stylesheet"
 />
 {% block body %}
-
+{% with messages = get_flashed_messages() %}
+            {% if messages == ' ' %}
+                <div class="flash-messages" style="display: none;">
+            {% elif messages %}
+                <div class="flash-messages" style="display: box;">
+                {% for message in messages %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+            {% endwith %}
 <form action="/login" method="POST">
 	<div class="login">
 		<div class="mainDIV">
 			<div class="leftDIV">
 				<img src="/static/images/heypac.png" alt="Avatar" class="image3" />
 			</div>
-
 			<div class="middleDIV"></div>
 			<div class="rightDIV">
 				<img src="/static/images/hey123.png" alt="Avatar" class="image" />
@@ -61,5 +70,13 @@
 		class="btn btn-primary btn-large btn-block"
 		name="create"
 	/>
+</a>
+<a href="/changepassword">
+    <input
+        type="submit"
+        value="Change Password"
+        class="btn btn-primary btn-large btn-block"
+        name="changepassword"
+    />
 </a>
 {% endblock %}
