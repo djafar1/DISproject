@@ -110,6 +110,14 @@
         width:100px;
     
     }
+    .leftDIV2{
+        position:fixed;
+        top:600px;
+        left:1300px;
+        height:50px;
+        width:100px;
+    
+    }
     .middleDIV{
         height:250px;
         width:200px;
@@ -124,4 +132,33 @@
         width:50px;
 
     }
+    .rightDIV2{
+        position:fixed;
+        top:130px;
+        right:400px;
+        height:100px;
+        width:70px;
+
+    }
+    .flash-messages {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        width: auto;
+        padding: 10px;
+        background-color: #f44336;
+        color: white;
+        border-radius: 5px;
+        opacity: 1;
+        transition: opacity 2s ease-in-out;
+    }
     
+    .alert {
+        padding: 10px;
+        color: white;
+        background-color: #f44336;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        transition: opacity 0.5s ease-out;
+    }

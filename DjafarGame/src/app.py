@@ -8,11 +8,12 @@ import os
 import glob
 import pandas as pd
 import random
+import re
 
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='Dis' user='felicia' host='localhost' password='myPassword'" #potentially wrong password
+db = "dbname='postgres' user='postgres' host='localhost' password=''" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -233,6 +234,27 @@ def gamepage(gameid):
     ct = cur.fetchone()
 
     return render_template("gameProfile.html", content=ct, games=ct)
+
+@app.route("/contact", methods=['POST', 'GET'])
+def contact():
+    cur = conn.cursor()
+    if request.method == 'POST':
+        new_email = request.form.get('email')
+        if new_email and re.match(r"[^@]+@[^@]+\.ku\.dk", new_email):
+            cur.execute("SELECT * FROM emails WHERE email = %s", (new_email,))
+            unique = cur.fetchall()
+            if len(unique) == 0:
+                cur.execute("INSERT INTO emails(email) VALUES (%s)", (new_email,))
+                conn.commit()
+                flash('Email signed up!')
+            else:
+                flash('Email already exists!')
+        else:
+            flash('Invalid email format or email is required.')
+    else:
+        flash(' ')
+    return render_template("contact.html")
+
 
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
