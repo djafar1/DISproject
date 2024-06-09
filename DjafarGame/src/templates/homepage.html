@@ -3,16 +3,16 @@
 <!-- Random Button -->
 <div class="querybox">
   <a href="/games/{{ randomNumber }}">
-    <button type="button">Random</button>
+    <button type="button" id='buttonFilter'>Random</button>
   </a>
 </div>
 
 <!-- Search Form -->
 <form action="" method="post" class="queryform">
   <div class="querybox">
-    <label>Title: <input type="text" name="RAtitle" value =" "></label>
+    <label>Title: <input type="text" id='buttonFilter' name="RAtitle" value =" "></label>
     <label>Genre:       
-    <select type = "text" id = "RAgenre" name="RAgenre">
+    <select type = "text" id = "buttonFilter" name="RAgenre">
         <option value="all">All</option>
         {% for i in range(0, lengthgenres) %}
           <option value="{{ genres[i][0] }}">{{ genres[i][0] }}</option>
@@ -20,23 +20,21 @@
       </select>
     </label>
     <label>Release Date: 
-    <select type = "text" id = "RAreleaseDate" name="RAreleaseDate">
+    <select type = "text" id = "buttonFilter" name="RAreleaseDate">
         <option value="all">All</option>
         {% for i in range(1, lengthyears) %}
           <option value="{{ years[i][0] }}">{{ years[i][0] }}</option>
         {% endfor %}
     </select> 
     </label>
-  </div>
-  <div class="querybox">
-    <label>UserScore:<select type = "RAuserScore" id="RAuserScore" name="RAuserScore">
+    <label>UserScore:<select type = "RAuserScore" id="buttonFilter" name="RAuserScore">
         <option value="all">all</option>
         <option value="0-3">0-3</option>
         <option value="3-6">3-6</option>
         <option value="6-9">6-9</option>
       </select>
     </label>
-    <input type="submit" value="Search">
+    <input type="submit" id='buttonFilter' value="Search">
   </div>
 </form>
 
