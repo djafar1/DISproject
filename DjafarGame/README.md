@@ -11,13 +11,13 @@ You need to have a functional Python 3 installation to use the site.
 	  psql -d{database} -U{user} -f Email.sql
 	  psql -d{database} -U{user} -f Create VideoGame.sql
 	  psql -d{database} -U{user} -f Create Users.sql
- 
+
+Make sure to be in src folder, or change the path to the sql files in the src folder.
 
 3. Go into the app.py file and set your own database, username and password
 
 4. Then you can run Web-App by using the code below
 >$ python src/app.py
-
 
 ----------------------------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ You need to have a functional Python 3 installation to use the site.
 1. Create account
 When you start the web-app you need to create an account, to do this you press the new account button and write a username and password
 
-2. Change password (UPDATE SQL is used he re)
+2. Change password (UPDATE SQL is used here)
 If you want to change your password you can press change password. You will then have to put in your username, password and the new password 2 times. If the passwords doesn't match up, youll get an error message otherwise your password will be updated in the database
 
 3. login
@@ -38,7 +38,7 @@ Once you've logged in you can see our homepage where you can filter through the 
 5. Faorites and Wishlist pages (DELETE and INSERT)
 When you click on a game, you have the option to add or remove them from your wishlist and favorites pages.
 
-6. contact page (ER is used here)
+6. Contact page (ER is used here)
 Finally we have used ER to create a newsletter page where you put in an email. The mail must be an @alumni.ku.dk mail
 
 

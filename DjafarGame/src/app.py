@@ -13,7 +13,7 @@ import re
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='Dis' user='felicia' host='localhost' password='myPassword'" #potentially wrong password
+db = "dbname='GameThing' user='postgres' host='localhost' password='hmx89ymf'" #potentially wrong password
 
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
@@ -276,6 +276,10 @@ def gamepage(gameid):
 @app.route("/contact", methods=['POST', 'GET'])
 def contact():
     cur = conn.cursor()
+    
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    
     if request.method == 'POST':
         new_email = request.form.get('email')
         if new_email and re.match(r"[^@]+@[^@]+\.ku\.dk", new_email):
