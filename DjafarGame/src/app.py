@@ -273,8 +273,8 @@ def gamepage(gameid):
 
     return render_template("gameProfile.html", content=ct, games=ct)
 
-@app.route("/contact", methods=['POST', 'GET'])
-def contact():
+@app.route("/newsletter", methods=['POST', 'GET'])
+def newsletter():
     cur = conn.cursor()
     if request.method == 'POST':
         new_email = request.form.get('email')
@@ -291,7 +291,7 @@ def contact():
             flash('Invalid email format or email is required.')
     else:
         flash(' ')
-    return render_template("contact.html")
+    return render_template("newsletter.html")
 
 
 if __name__ == "__main__":

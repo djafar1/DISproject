@@ -38,7 +38,7 @@ li a:hover:not(.active) {
 }
 
 body {
-  background: #220350;
+  background: #65a4ec;
   margin-top: 10px;
   margin-left: 100px;
   margin-right: 100px;
@@ -136,13 +136,13 @@ h1 {
 }
 h2 {
   font-size: 1.5em;
-  color: #28A745;
+  color: #6294f1;
   text-align: center;
 }
 h3 {
   text-align: center;
   font-size: 1.5em;
-  color: #28A745;
+  color: #2863a7;
 }
 h4 {
     text-align: center;
@@ -150,7 +150,7 @@ h4 {
 }
 p.card-text {
     font-size: 0.6em;
-    color: #0abdc6;
+    color: #fbfeff;
 }
 
 .contact {
@@ -259,7 +259,7 @@ p.card-text {
 }
 
 .card {
-  background-color: #1e1e1e; 
+  background-color: #252b2e; 
   color: white; 
   margin: 10px auto;
   padding: 20px; 
@@ -295,7 +295,7 @@ p.card-text {
 
 .game:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  border: 4px solid #28A745;
+  border: 4px solid #2898a7;
 }
 
 .container {
