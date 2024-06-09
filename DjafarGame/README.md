@@ -6,11 +6,11 @@ You need to have a functional Python 3 installation to use the site.
 >$ pip install -r requirements.txt
 
 2. Initialize the 5 necessary database, by running the SQL files
-	  psql -d{database} -U{user} -f Favorites.sql
-	  psql -d{database} -U{user} -f WishList.sql
-	  psql -d{database} -U{user} -f Email.sql
-	  psql -d{database} -U{user} -f Create VideoGame.sql
-	  psql -d{database} -U{user} -f Create Users.sql
+	  psql -d{database} -U{user} -f Favorites.SQL
+	  psql -d{database} -U{user} -f WishList.SQL
+	  psql -d{database} -U{user} -f Email.SQL
+	  psql -d{database} -U{user} -f Create VideoGame.SQL
+	  psql -d{database} -U{user} -f Create Users.SQL
 
 Make sure to be in src folder, or change the path to the sql files in the src folder.
 
