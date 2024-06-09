@@ -56,7 +56,7 @@ label {
   outline:none;
   background: linear-gradient(to left top, #000, #0849a4) fixed;
   border: 4px solid #007BFF;
-  color: rgba(255,255,255,0.8);
+  color: rgba(130, 188, 255, 0.8);
   margin: 5px;
   transition: all 0.5s;
 }
