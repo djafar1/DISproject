@@ -1,5 +1,6 @@
 {% extends "navbar.html" %} {% block content %}
 <h1>Videogame Database!</h1>
+  <h2>Results: {{length}}</h2>
   <div class="games">
     {%for i in range(0,length)%}
     <a href="/games/{{games[i][8]}}">
