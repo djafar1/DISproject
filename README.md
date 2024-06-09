@@ -1,3 +1,4 @@
+![alt text](ER.png)
 # Setting up the game database :
 
 You need to have a functional Python 3 installation to use the site. 
