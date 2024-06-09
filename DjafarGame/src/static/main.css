@@ -38,7 +38,7 @@ li a:hover:not(.active) {
 }
 
 body {
-  background: #65a4ec;
+  background: linear-gradient(to top, #65c1ec, #1b4c63) fixed;
   margin-top: 10px;
   margin-left: 100px;
   margin-right: 100px;
@@ -75,10 +75,10 @@ width: 100px;
 
 #form:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  border: 4px solid #28A745;
+  border: 4px solid #3dc4e6;
 }
 #form:focus {
-  border: 4px solid #28A745;
+  border: 4px solid #3dc4e6;
 }
 
 #button {
@@ -110,11 +110,11 @@ width: 100px;
   text-decoration: none;
 }
 #buttonAdd:hover {
-  border: 4px solid #28A745;
+  border: 4px solid #3dc4e6;
 }
 
 #buttonAdd:focus {
-  border: 4px solid #28A745;
+  border: 4px solid #3dc4e6;
 }
 
 #buttonFilter {
@@ -130,13 +130,12 @@ width: 100px;
   text-decoration: none;
 }
 
-
 #button:hover {
-  border: 4px solid #28A745;
+  border: 4px solid #3dc4e6;
 }
 
 #button:focus {
-  border: 4px solid #28A745;
+  border: 4px solid #3dc4e6;
 }
 p {
   font-size: 1.2em;
@@ -145,18 +144,18 @@ p {
 
 h1 {
   font-size: 2.5em;
-  color: #007BFF;
+  color: #78b6f8;
   text-align: center;
 }
 h2 {
   font-size: 1.5em;
-  color: #444bca;
+  color: #678ddf;
   text-align: center;
 }
 h3 {
   text-align: center;
   font-size: 1.5em;
-  color: #2863a7;
+  color: #6297d4;
 }
 h4 {
     text-align: center;
@@ -286,7 +285,7 @@ p.card-text {
 /* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  border: 4px solid #28A745;
+  border: 4px solid #3dc4e6;
 }
 
 /*OUR VIDEO GAME TEST*/
